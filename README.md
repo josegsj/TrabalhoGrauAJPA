@@ -3,7 +3,7 @@
 1-Versões
   java 8
   jdk 1.8
-  postgress
+  postgress versão ainda não definida
 
 2-Para conseguir utilizar o Lombok siga esse tutorial:
 
