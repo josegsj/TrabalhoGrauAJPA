@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  app:
+    image: br.unisinos.bd2/app:0.0.1
+    container_name: app
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      - PGHOST=database
+      - PGDATABASE=trabga
+      - PGUSER=postgres
+      - PGPASSWORD=root
+      - PGPORT=5432
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    restart: always
+    container_name: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata: {}
