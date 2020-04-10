@@ -20,17 +20,17 @@ public class Produto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Produto")
 	@SequenceGenerator(name = "seq_Produto", sequenceName = "s_Produto", allocationSize = 1)
-	private Long id;
+	private Long codigoProduto;
 	
 	@Column(length=50, unique=true, nullable = false)
 	private String nome;
 
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "idCategoria")
+	@JoinColumn(name = "codigoCategoria")
 	private Categoria categoria;
 	
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "idGrade")
+	@JoinColumn(name = "codigoGrade")
 	private Grade grade;
 	
 	@Column(nullable = false)

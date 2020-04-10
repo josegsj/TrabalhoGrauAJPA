@@ -20,18 +20,17 @@ import javax.persistence.Table;
 
 public class Categoria implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Produto")
-	@SequenceGenerator(name = "seq_Produto", sequenceName = "s_Produto", allocationSize = 1)
-	private Long id;
-	
-	@OneToMany(mappedBy= "categoria")
-	private List<Produto> produtos;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Categoria")
+	@SequenceGenerator(name = "seq_Categoria", sequenceName = "s_Categoria", allocationSize = 1)
+	private Long codigoCategoria;
 
 	@Column(length=50, unique=true, nullable = false)
 	private String nome;
-
+	
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "idSecao")
+	@JoinColumn(name = "codigoSecao")
 	private Secao secao;
 
+	@OneToMany(mappedBy= "categoria")
+	private List<Produto> produtos;
 }
