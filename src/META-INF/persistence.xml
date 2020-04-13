@@ -7,12 +7,20 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 	<!-- Model -->
-	<class>br.unisinos.bd2.model.Produto</class>
 	<class>br.unisinos.bd2.model.Categoria</class>
-	<class>br.unisinos.bd2.model.Secao</class>
+	<class>br.unisinos.bd2.model.Cor</class>
+	<class>br.unisinos.bd2.model.Departamento</class>
+	<class>br.unisinos.bd2.model.Empresa</class>
+	<class>br.unisinos.bd2.model.EstoqueGradeItem</class>
 	<class>br.unisinos.bd2.model.Grade</class>
+	<class>br.unisinos.bd2.model.GradeItem</class>
+	<class>br.unisinos.bd2.model.Holding</class>
+	<class>br.unisinos.bd2.model.Loja</class>
+	<class>br.unisinos.bd2.model.LojaDepartamento</class>
+	<class>br.unisinos.bd2.model.Produto</class>
+	<class>br.unisinos.bd2.model.Secao</class>
+	<class>br.unisinos.bd2.model.Tamanho</class>
 	
-
 	<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	<properties>
 		<property name="hibernate.show_sql" value="true" />
