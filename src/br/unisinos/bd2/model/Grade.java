@@ -28,9 +28,9 @@ public class Grade {
 	
 	@OneToMany(mappedBy= "grade")
 	private List<Produto> produtos;
-//	
-//	@OneToMany(mappedBy= "grade")
-//	private List<GradeItem> gradeItem;
+	
+	@OneToMany(mappedBy= "grade")
+	private List<GradeItem> gradeItem;
 	
 }
 

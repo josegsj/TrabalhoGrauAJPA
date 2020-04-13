@@ -1,6 +1,5 @@
 package br.unisinos.bd2.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,20 +15,26 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATEGORIA")
-public class Categoria implements Serializable {
+@Table(name = "EMPRESA")
+public class Empresa {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Categoria")
-	@SequenceGenerator(name = "seq_Categoria", sequenceName = "s_Categoria", allocationSize = 1)
-	private Long codigoCategoria;
-
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Empresa")
+	@SequenceGenerator(name = "seq_Empresa", sequenceName = "s_Empresa", allocationSize = 1)
+	private Long codigoEmpresa;
+	
+	@OneToMany(mappedBy= "empresa")
+	private List<Loja> loja;
+	
 	@Column(length=50, unique=true, nullable = false)
-	private String nome;
+	private String razaoSocial;
+	
+	@Column(length=50, unique=true, nullable = false)
+	private String fantasia;
+	
+	@Column(length=50, unique=true, nullable = false)
+	private String logradouro;
 	
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoSecao")
-	private Secao secao;
-
-	@OneToMany(mappedBy= "categoria")
-	private List<Produto> produtos;
+	@JoinColumn(name = "codigoHolding")
+	private Holding holding;
 }

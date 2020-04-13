@@ -24,4 +24,7 @@ public class Departamento {
 	
 	@OneToMany(mappedBy= "departamento")
 	private List<Secao> secao;
+	
+	@OneToMany(mappedBy= "departamento")
+	private List<LojaDepartamento> lojaDepartamento;
 }
