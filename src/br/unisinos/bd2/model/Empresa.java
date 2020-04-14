@@ -21,6 +21,7 @@ public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Empresa")
 	@SequenceGenerator(name = "seq_Empresa", sequenceName = "s_Empresa", allocationSize = 1)
+	@Column(name = "codigo_empresa")
 	private Long codigoEmpresa;
 	
 	@OneToMany(mappedBy= "empresa")
