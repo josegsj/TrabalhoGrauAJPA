@@ -21,6 +21,7 @@ public class Grade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Grade")
 	@SequenceGenerator(name = "seq_Grade", sequenceName = "s_Grade", allocationSize = 1)
+	@Column(name = "codigo_grade")
 	private Long codigoGrade;
 	
 	@Column(length=50, unique=true, nullable = false)
