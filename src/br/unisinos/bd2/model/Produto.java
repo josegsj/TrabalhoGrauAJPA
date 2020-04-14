@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,22 +21,23 @@ public class Produto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Produto")
 	@SequenceGenerator(name = "seq_Produto", sequenceName = "s_Produto", allocationSize = 1)
+	@Column(name = "codigo_produto")
 	private Long codigoProduto;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String nome;
 
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoCategoria")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_categoria", foreignKey = @ForeignKey(name = "fk_produto_categoria"))
 	private Categoria categoria;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoGrade")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_grade", foreignKey = @ForeignKey(name = "fk_produto_grade"))
 	private Grade grade;
 	
-	@Column(nullable = false)
+	@Column(name = "estoque_atual", nullable = false)
 	private Integer estoqueAtual;
 	
-	@Column(nullable = false)
+	@Column(name = "estoque_minimo", nullable = false)
 	private Integer estoqueMinimo;
 }

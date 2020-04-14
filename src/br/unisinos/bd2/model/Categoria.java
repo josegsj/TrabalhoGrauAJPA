@@ -22,13 +22,14 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Categoria")
 	@SequenceGenerator(name = "seq_Categoria", sequenceName = "s_Categoria", allocationSize = 1)
+	@Column(name = "codigo_categoria")
 	private Long codigoCategoria;
 
 	@Column(length=50, unique=true, nullable = false)
 	private String nome;
 	
 	@ManyToOne(optional = true, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoSecao", foreignKey = @ForeignKey(name = "fk_categoria_secao"))
+	@JoinColumn(name = "codigo_Secao", foreignKey = @ForeignKey(name = "fk_categoria_secao"))
 	private Secao secao;
 
 	@OneToMany(mappedBy= "categoria")
