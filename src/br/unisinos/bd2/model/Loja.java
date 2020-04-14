@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,25 +23,25 @@ public class Loja {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Loja")
 	@SequenceGenerator(name = "seq_Loja", sequenceName = "s_Loja", allocationSize = 1)
+	@Column(name = "codigo_loja")
 	private Long codigoLoja;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoEmpresa")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_empresa", foreignKey = @ForeignKey(name = "fk_loja_empresa"))
 	private Empresa empresa;
+	
+	@Column(length=50, nullable = false)
+	private String nome;
+		
+	@Column(name = "data_abertura", nullable = false)
+	private Date dataAbertura;
+	
+	@Column(name = "nro_funcionario", nullable = false)
+	private Integer nroFuncionario;
 	
 	@OneToMany(mappedBy= "loja")
 	private List<LojaDepartamento> lojaDepartamento;
-		
+	
 	@OneToMany(mappedBy= "loja")
 	private List<EstoqueGradeItem> estoqueGradeItem;
-	
-	@Column(length=50, unique=true, nullable = false)
-	private String nome;
-	
-	@Column(nullable = false)
-	private Integer nroFuncionario;
-	
-	@Column(nullable = false)
-	private Date dataAbertura;
-	
 }
