@@ -17,6 +17,7 @@ public class Cor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Cor")
 	@SequenceGenerator(name = "seq_Cor", sequenceName = "s_Cor", allocationSize = 1)
+	@Column(name = "codigo_cor")
 	private Long codigoCor;
 	
 	@Column(length=50, unique=true, nullable = false)
