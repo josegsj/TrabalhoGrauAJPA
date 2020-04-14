@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.ForeignKey;
 
 @Entity
 @Table(name = "CATEGORIA")
@@ -26,8 +27,8 @@ public class Categoria implements Serializable {
 	@Column(length=50, unique=true, nullable = false)
 	private String nome;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoSecao")
+	@ManyToOne(optional = true, cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigoSecao", foreignKey = @ForeignKey(name = "fk_categoria_secao"))
 	private Secao secao;
 
 	@OneToMany(mappedBy= "categoria")

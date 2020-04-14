@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,16 +26,16 @@ public class Empresa {
 	@OneToMany(mappedBy= "empresa")
 	private List<Loja> loja;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String razaoSocial;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String fantasia;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String logradouro;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoHolding")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigoHolding", foreignKey = @ForeignKey(name = "fk_empresa_holding"))
 	private Holding holding;
 }

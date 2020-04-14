@@ -29,4 +29,8 @@ public class EstoqueGradeItem {
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
 	@JoinColumn(name = "codigoEmpresa")
 	private Empresa empresa;
+	
+	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigoLoja")
+	private Loja loja;
 }

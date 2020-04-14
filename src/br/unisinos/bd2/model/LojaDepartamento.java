@@ -26,6 +26,6 @@ public class LojaDepartamento {
 	private Loja loja;
 	
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoEmpresa")
+	@JoinColumn(name = "codigoDepartamento")
 	private Departamento departamento;
 }

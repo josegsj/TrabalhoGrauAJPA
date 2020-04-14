@@ -23,7 +23,7 @@ public class Holding {
 	@SequenceGenerator(name = "seq_Holding", sequenceName = "s_Holding", allocationSize = 1)
 	private Long codigoHolding;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String nome;
 	
 	@OneToMany(mappedBy= "holding")
