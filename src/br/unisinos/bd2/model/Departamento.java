@@ -17,9 +17,10 @@ public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Departamento")
 	@SequenceGenerator(name = "seq_Departamento", sequenceName = "s_Departamento", allocationSize = 1)
+	@Column(name = "codigo_departamento")
 	private Long codigoDepartamento;
 	
-	@Column(length=50, unique=true, nullable = false)
+	@Column(length=50, nullable = false)
 	private String nome;
 	
 	@OneToMany(mappedBy= "departamento")
