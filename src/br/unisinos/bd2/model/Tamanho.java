@@ -17,6 +17,7 @@ public class Tamanho {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Tamanho")
 	@SequenceGenerator(name = "seq_Tamanho", sequenceName = "s_Tamanho", allocationSize = 1)
+	@Column(name = "codigo_tamanho")
 	private Long codigoTamanho;
 	
 	@Column(length=50, unique=true, nullable = false)

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,21 +21,22 @@ public class GradeItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Grade_item")
 	@SequenceGenerator(name = "seq_Grade_item", sequenceName = "s_Grade_item", allocationSize = 1)
+	@Column(name = "codigo_grade_item")
 	private Long codigoGradeItem;
 	
 	@Column(length=50, unique=true, nullable = false)
 	private String nome;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoGrade")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_grade", foreignKey = @ForeignKey(name = "fk_grade_item_grade"))
 	private Grade grade;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoCor")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_cor", foreignKey = @ForeignKey(name = "fk_grade_item_cor"))
 	private Cor cor;
 	
-	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "codigoTamanho")
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "codigo_tamanho", foreignKey = @ForeignKey(name = "fk_grade_item_tamanho"))
 	private Tamanho tamanho;
 	
 	@OneToMany(mappedBy= "gradeItem")
