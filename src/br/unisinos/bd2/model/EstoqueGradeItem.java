@@ -1,5 +1,7 @@
 package br.unisinos.bd2.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +14,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Entity
 @Table(name = "ESTOQUE_GRADE_ITEM")
-public class EstoqueGradeItem {
+public class EstoqueGradeItem implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_EstoqueGradeItem")
 	@SequenceGenerator(name = "seq_EstoqueGradeItem", sequenceName = "s_EstoqueGradeItem", allocationSize = 1)

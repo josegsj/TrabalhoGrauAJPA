@@ -13,17 +13,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
+@Data
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id") @Entity
 @Table(name = "loja_departamento", uniqueConstraints = @UniqueConstraint(name = "uk_lojaDepartamento", columnNames = {"codigo_departamento", "codigo_loja", "codigo_empresa"}))
-
 public class LojaDepartamento implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
-	@Getter @Setter
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "s_LojaDepartamento")
 	@SequenceGenerator(name = "s_LojaDepartamento", sequenceName = "s_LojaDepartamento", allocationSize = 1)

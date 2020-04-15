@@ -14,10 +14,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Entity
 @Table(name = "PRODUTO")
-
 public class Produto implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Produto")
 	@SequenceGenerator(name = "seq_Produto", sequenceName = "s_Produto", allocationSize = 1)

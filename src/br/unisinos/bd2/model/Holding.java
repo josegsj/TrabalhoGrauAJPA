@@ -1,5 +1,6 @@
 package br.unisinos.bd2.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,12 +13,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
+@Data
+@AllArgsConstructor
 @Entity
 @Table(name = "HOLDING")
-public class Holding {
+public class Holding implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Holding")
 	@SequenceGenerator(name = "seq_Holding", sequenceName = "s_Holding", allocationSize = 1)
