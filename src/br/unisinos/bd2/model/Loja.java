@@ -16,14 +16,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "LOJA")
+@EqualsAndHashCode(of = "id")
+@Table(name = "LOJA", uniqueConstraints = @UniqueConstraint(name = "uk_loja", columnNames = {"codigo_empresa", "codigo_loja"}))
+
 public class Loja implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
