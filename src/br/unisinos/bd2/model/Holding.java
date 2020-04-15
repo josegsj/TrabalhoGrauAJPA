@@ -26,6 +26,7 @@ public class Holding implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Holding")
 	@SequenceGenerator(name = "seq_Holding", sequenceName = "s_Holding", allocationSize = 1)
+	@Column(name = "codigo_holding")
 	private Long codigoHolding;
 	
 	@Column(length=50, nullable = false)

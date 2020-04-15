@@ -36,7 +36,7 @@ public class Empresa implements Serializable {
 	@OneToMany(mappedBy= "empresa")
 	private List<Loja> loja;
 	
-	@Column(length=50, nullable = false)
+	@Column(name="razao_social",length=50, nullable = false)
 	private String razaoSocial;
 	
 	@Column(length=50, nullable = false)
