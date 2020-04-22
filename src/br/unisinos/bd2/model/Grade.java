@@ -18,20 +18,25 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "HOLDING")
-public class Holding implements Serializable {
+@Table(name = "GRADE")
+public class Grade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Holding")
-	@SequenceGenerator(name = "seq_Holding", sequenceName = "s_Holding", allocationSize = 1)
-	@Column(name = "codigo_holding")
-	private Long codigoHolding;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Grade")
+	@SequenceGenerator(name = "seq_Grade", sequenceName = "s_Grade", allocationSize = 1)
+	@Column(name = "codigo_grade")
+	private Long codigoGrade;
 	
-	@Column(length=50, nullable = false)
+	@Column(length=50, unique=true, nullable = false)
 	private String nome;
 	
-	@OneToMany(mappedBy= "holding")
-	private List<Empresa> empresa;
+	@OneToMany(mappedBy= "grade")
+	private List<Produto> produtos;
+	
+	@OneToMany(mappedBy= "grade")
+	private List<GradeItem> gradeItem;
+	
 }
+
